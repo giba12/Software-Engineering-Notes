@@ -1,0 +1,23 @@
+Basic Information
+
+Generic programing-> Multi type, compiler generates a version when use. I.e. Instantiation. 
+
+template<typename T> v.s. template<class T>
+  Are otherwise equivalent...
+    Compiler treams them interchangeably ->
+    No b
+    
+  Unless...
+  <typename>
+    Created to reflect the general nature of templates. i.e. not JUST classes. 
+    Dependent types-> (Types whose definition depends on a value.
+                      (Typically computed at compile time.
+                      (Different than polymorphism-> 
+                      
+    When class is not allowed->
+    
+
+  <class>
+    Historically thought that classes would dominate template parameters.
+
+Initialization->
