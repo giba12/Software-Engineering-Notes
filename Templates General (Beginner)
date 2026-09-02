@@ -51,8 +51,18 @@ Initialization->
     template <typename T>
     T add(T a, T b){ return a + b; }
     int c = add(2, 3);
-    double y = add(2.5, 3.5);                        result-> 
+    double y = add(2.5, 3.5);                        
+    result-> 5, and 6. 
+      //the template declairs a template of type "T". I.e., instead of "int T," it's "general-programing-type T"
+      //It's "type function (function-type value, function-type value) instead of (for example) int add( int a, int b).
+      //That way you can pass and return what ever type (so long as its type-logic is compatible with this function). 
 
+    template <typename T>
+    T multiply(T a, T b){ return a * b; }
+    auto x = multiply<int>(2,3);
+    auto y = multiply<double>(2,3);
+      //Reminder: <double>(2,3) converts the arguments to double
+      //
     
 
 
