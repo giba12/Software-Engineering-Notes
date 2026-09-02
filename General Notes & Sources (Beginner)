@@ -42,7 +42,7 @@ Generic programing-> Multi type, compiler generates a version when use. I.e. Ins
         Predates <typename>
         template<class T> must not always declare "T" as a type... it can be an int, function, etc. 
         Can restrict what a template parameter is-> declaring a "class template" means the template container is a class, instead of ____ .
-          i.e. C++ can have template-classes within a template. WHICH can influence member access (private, public, and protected)
+          i.e. C++ can have template-classes within a template. WHICH can influence member access (private, public, and protected-> encapsulation)
         Has alternative meanings outside of this context.
         Operates at a different level of C++ type system->
                                                             ("class" declares a "class" type. 
@@ -51,7 +51,7 @@ Generic programing-> Multi type, compiler generates a version when use. I.e. Ins
 
 Initialization Examples->
   Simple template examples->
-~~~~~  Basic template example: 
+1 ~~~~~  Basic template example: 
     template <typename T>
     T add(T a, T b){ return a + b; }
     int c = add(2, 3);
@@ -61,7 +61,7 @@ Initialization Examples->
       //It's "type function (function-type value, function-type value) instead of (for example) int add( int a, int b).
       //That way you can pass and return what ever type (so long as its type-logic is compatible with this function). 
 
-~~~~~~  Explicit and deuction template argument example:
+2 ~~~~~~  Explicit and deuction template argument example:
     template <typename T>
     T multiply(T a, T b){ return a * b; }
     auto x = multiply<int>(2,3);
@@ -77,7 +77,7 @@ Initialization Examples->
             with the arugments (int 2, int 3). 
       // Note, we did not define the type of "x & y", the compiler 'deduced' the type of "x & y"-> redundant, but worth stating 'explicitly' ;)
 
-~~~~~  Two *type parameter with return-type deductionexample:
+3 ~~~~~  Two *type parameter with return-type deductionexample:
     template <typename T, typename U>
     auto add(T x, U y){ return x + y; }
       auto result = add(10, 2.5);                     result-> 12.5 (double) 
@@ -86,7 +86,7 @@ Initialization Examples->
       //So -> "10" and "2.5" can retain their intitial types (int and double) until the compiler deduces their new type 
           after the function "add" returns "x + y."
 
-~~~~~  Generic comparison example:
+4 ~~~~~  Generic comparison example:
     template <typename T>
     bool greater(T a, T b){ return a > b; }
     greater(10, 5);
@@ -97,18 +97,53 @@ Initialization Examples->
     //Note, templates do not *require inheritance or a common base class. Templates can be global variables... consider best-practices though. 
     //function 'greater' only requires that type 'T' must be compatible with the '>' operator. 
   
-~~~~~  Classes in templates example: 
+5 ~~~~~  Class Constructors in templates example: 
     template <typename T>
     class Box {
-      private: T value;
+      private: T value; 
       public: 
-        Box( t value) : value(value) { }
+        Box( T value) : value(value){ } //i.e. className(parameter-> of type 'T' named 'value):member(parameter)-> type-T 'value'(paramenter named 'value')
         T get() const {return value; }
       }; 
     Box<int> a(42);
     Box<double> b(3.14;
-    Box<string> c("Hello");
+    Box<string> c("Hello");            
+    
+    result (int, 42) ->
+      private: int memberValue;
+      public:
+        Box(int passedValue) : memberValue(passedValue) {/* makes 'memberValue' = 42 */}
 
+    // The constructor allows you to set values before the constructor body executes
+    // "Box" does not create a type until its explicitly called to do so- it is creating a setup for instantiation. 
+    // The class (also a 'type') "Box" has one private member "T" of 'type' template named 'value'. 
+    // The class initializes with the constructor "Box(T value) : value(value) {}", or in plain language->
+            ( 'Box(T value)' is the parameter of the constructor function (i.e. it defines what arguments are required for the function)
+            ( Box('template-type' value (is the private member)): 'template-type' member( 'class-type' value) 
+            ( for example... Box(int value)-> class "Box" initializes its private member of type int : value(value)-> function "value" inherits the newly 
+            (   initialized integer "value" as a parameter. 
+            ( when the data type of class called "Box" gets called in another *function, it has to initialize a data container of type "T" called "value"-
+
+6 ~~~~~  Generic Container templates example:
+    template <typename T>
+    class Array {
+    private: 
+      T *data; 
+      std::size_t size; //"std::size_t" is the unsigned-postive only- integer type value returned by the function"sizeof" 
+    public:
+      Array(std::size_t size) : size(size), data(new T[size]) {} 
+      ~Array() { delete[] data; }
+      T& operator[](std::size_t index) { return data[index]; }
+      std::size_t get_size() const {return size; }
+    };
+    Array<int> numbers(10);
+    numbers[0] = 42;
+    numbers[1] = 100;                                                result-> (42, 100)
+
+    Logic explaination:
+    //An array of type "class" contains a private pointer of type "T" called "data"
+    //An unisgned-int called "size" will store the result of the function "sizeof" 
+    //The class constructor first grabs the result of 'sizeof' using 
 
     
 
