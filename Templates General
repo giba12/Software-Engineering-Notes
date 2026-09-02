@@ -1,23 +1,30 @@
+Sources: 
+Abrahams, David, & Aleksey Gurtovoy. (2005). *C++ template metaprogramming: concepts, tools, and techniques from Boost and beyond. Person Education, Inc. 
+
+
 Basic Information
 
 Generic programing-> Multi type, compiler generates a version when use. I.e. Instantiation. 
 
-template<typename T> v.s. template<class T>
-  Are otherwise equivalent...
-    Compiler treams them interchangeably ->
-    No b
+  template<typename T> v.s. template<class T>
+    Are otherwise equivalent...
+      Compiler treams them interchangeably ->
+      
     
-  Unless...
-  <typename>
-    Created to reflect the general nature of templates. i.e. not JUST classes. 
-    Dependent types-> (Types whose definition depends on a value.
-                      (Typically computed at compile time.
-                      (Different than polymorphism-> 
-                      
-    When class is not allowed->
-    
-
-  <class>
-    Historically thought that classes would dominate template parameters.
+    Unless...
+      <typename>
+        Created to reflect the general nature of templates. i.e. not JUST classes. 
+        Recomened standard (Google)
+        More ambiguity in the sense that <typename> does not denote its data-structure. 
+        Dependent types-> (Types whose definition depends on a value.
+                          (Typically computed at compile time.
+                          (Different than polymorphism-> 
+                        
+        When class is not allowed-> 
+      
+  
+      <class>
+        Predates <typename>
+      
 
 Initialization->
