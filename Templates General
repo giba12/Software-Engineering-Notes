@@ -2,28 +2,46 @@ Sources:
 Abrahams, David, & Aleksey Gurtovoy. (2005). *C++ template metaprogramming: concepts, tools, and techniques from Boost and beyond. Person Education, Inc. 
 
 Basic Information
-
 Generic programing-> Multi type, compiler generates a version when use. I.e. Instantiation. 
 
   template<typename T> v.s. template<class T>
     Are otherwise equivalent...
-      Compiler treams them interchangeably ->
+      Compiler treams them interchangeably in this context->
       
-    
     Unless...
+
+      <class> and <typename> can not be used interchangeably in the same instance. (Dependent types) 
+      For example->
+        template <typename T>
+        void foo(){
+          class::some_type x; } 
+      Does not work. 
+      
       <typename>
         Created to reflect the general nature of templates. i.e. not JUST classes. 
         Recomened standard (Google)
-        More ambiguity in the sense that <typename> does not denote its data-structure. 
-        Dependent types-> (Types whose definition depends on a value.
+        More ambiguity in the sense that <typename> does not denote its data-structure. (Or less ambiguity, depending on your perspective!) 
+        C++ does not automatically assume <typename> represents a "type." 
+        Dependent types-> (Types whose definition depends on a value. i.e. the value of a dependent type is not known until compile-time.
                           (Typically computed at compile time.
                           (Different than polymorphism-> 
-                        
-        When class is not allowed-> 
+                            Similar in the sense that both dependant types and polymorphism require auxilary information.
+                            Can be used together. 
+                            Dependent types (compile-time)-> what types mean at compile time. i.e. What type? 
+                                                             Can have any* type but same behavior.
+                            Polymorphism (run-time)->        allowing different types use a common interface. What use-case? 
+                                                             Can have any* behavior but same type. 
       
   
       <class>
         Predates <typename>
+        template<class T> must not always declare "T" as a type... it can be an int, function, etc. 
+        Can restrict what a template parameter is-> declaring a "class template" means the template container is a class, instead of ____ .
+          i.e. C++ can have template-classes within a template. WHICH can influence member access (private, public, and protected)
+        Has alternative meanings outside of this context.
+        Operates at a different level of C++ type system->
+                                                            ("class" declares a "class" type. 
+                                                            ("class" defines the container type "class" 
       
 
 Initialization->
