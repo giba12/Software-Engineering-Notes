@@ -1,7 +1,6 @@
 Sources: 
 Abrahams, David, & Aleksey Gurtovoy. (2005). *C++ template metaprogramming: concepts, tools, and techniques from Boost and beyond. Person Education, Inc. 
 
-
 Basic Information
 
 Generic programing-> Multi type, compiler generates a version when use. I.e. Instantiation. 
