@@ -165,16 +165,34 @@ Initialization Examples->
     private:
       T data[Size];
     public:
-      contexpr std::size_t size() //contextpr is a keyword that allows you to declare variaables/functions evaluated at comp-time. Performance and memory opt
-    const { return Size; }
+      contexpr std::size_t size() const { return Size; }
     };
     Array<int, 10> numbers; -> numbers becomes an array of integers with 10 elements. 
 
-  Logic explaination
-  //The template has an unsigned-int parameter named "Size" and a value of type "T".
-  //"Array" class contains a private array of type "T" name "data" with "Size" amount of elements.
-  //The class member function "contexpr std::size_t size()" evaluates the size of the private member array "data" and returns its size.
+    Logic explaination
+    //The template has an unsigned-int parameter named "Size" and a value of type "T".
+    //"Array" class contains a private array of type "T" name "data" with "Size" amount of elements.
+    //The class member function "contexpr std::size_t size()" evaluates the size of the private member array "data" and returns its size.
 Note, the "const" before the member function brackets denotes that the function can not change the value of its parameter(s)- it is called a "cv-qualiffier"
 
-9 ~~~~~  Non-type template parameters example:
+9 ~~~~~  Compile-time array size template example:
+    template <typename T, std::size_t Size>
+    class Array {
+      T data[Size];
+    public:
+      constexpr std::size_t size() const { return Size; }
+    };
+    Array<int, 42> numbers; 
+    static_assert(numbers.size() == 42); 
+    //contextpr is a keyword that allows you to declare variaables/functions evaluated at comp-time. Performance and memory opt
+
+10 ~~~~~  Default template parameters example:
+    template <typename T = int>
+    class Box {
+    public:
+      T value;
+    };
+    Box<double> a; - > Box becomes a double dispite int notation.
+    Box<> b; -> Box becomes an int due default notation. 
+
 
