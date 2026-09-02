@@ -124,26 +124,57 @@ Initialization Examples->
             (   initialized integer "value" as a parameter. 
             ( when the data type of class called "Box" gets called in another *function, it has to initialize a data container of type "T" called "value"-
 
-6 ~~~~~  Generic Container templates example:
+6 ~~~~~  Generic dynamic array templates example:
     template <typename T>
     class Array {
     private: 
       T *data; 
-      std::size_t size; //"std::size_t" is the unsigned-postive only- integer type value returned by the function"sizeof" 
+      std::size_t sizeClass; //"std::size_t" is the unsigned-postive only- integer type value returned by the function"sizeof" 
     public:
-      Array(std::size_t size) : size(size), data(new T[size]) {} 
-      ~Array() { delete[] data; }
-      T& operator[](std::size_t index) { return data[index]; }
-      std::size_t get_size() const {return size; }
+      Array(std::size_t sizePassed) : sizeClass(sizePassed), data(new T[sizeClass]) {} 
+      ~Array() { delete[] data; } //deletes old array 
+      T& operator[](std::size_t index) { return data[index]; } //gets the element at __ index. 
+      std::size_t get_size() const {return size; } //gets the size
     };
     Array<int> numbers(10);
     numbers[0] = 42;
     numbers[1] = 100;                                                result-> (42, 100)
 
     Logic explaination:
-    //An array of type "class" contains a private pointer of type "T" called "data"
-    //An unisgned-int called "size" will store the result of the function "sizeof" 
-    //The class constructor first grabs the result of 'sizeof' using 
+    //An array of type "class" contains a private pointer to an object of type "T" called "data"
+    //An unisgned-int called "sizeClass" will store the result of the function "sizeof" 
+    //The class constructor grabs the result of the 'sizeof' function using the value passed to "sizePassed" from outside the class.
+    //The constructor will allocate sizeClass amount of memory/the amount of elements in the new array.  
+    //The sizeClass initializes itself with the value of sizePassed. 
+    //data(new T[size]) creates an array of type "T" of size sizeClass... i.e. int *data; data = new int[10]; 
+    //data will point to the first element. 
+//Note, array iterators move through arrays by adding the byte-sze of "T" to its current position in the array 
 
-    
+7 ~~~~~  Multiple templates parameters in a class-hetergeneous generic data structures example:
+    template <typename Key, typename Value>
+    class Pair {
+    public: Key key;
+            Value value;
+    };
+    Pair<std::string, int> person;
+    //instantiates class "Pair" with and object called "person" with Key as a string, and Value as an integer
+
+8 ~~~~~  Non-type template parameters example:
+    template <typename T, std::size_t Size> //std::size_t is an unsigned-int of the sizeof() function
+    class Array {
+    private:
+      T data[Size];
+    public:
+      contexpr std::size_t size() //contextpr is a keyword that allows you to declare variaables/functions evaluated at comp-time. Performance and memory opt
+    const { return Size; }
+    };
+    Array<int, 10> numbers; -> numbers becomes an array of integers with 10 elements. 
+
+  Logic explaination
+  //The template has an unsigned-int parameter named "Size" and a value of type "T".
+  //"Array" class contains a private array of type "T" name "data" with "Size" amount of elements.
+  //The class member function "contexpr std::size_t size()" evaluates the size of the private member array "data" and returns its size.
+Note, the "const" before the member function brackets denotes that the function can not change the value of its parameter(s)- it is called a "cv-qualiffier"
+
+9 ~~~~~  Non-type template parameters example:
 
