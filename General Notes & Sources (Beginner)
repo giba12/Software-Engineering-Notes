@@ -291,3 +291,96 @@ Note, the "const" before the member function brackets denotes that the function 
 
 17 ~~~~~  Variadic Templates Example:
 
+    template <typename ...Args>
+    void print(Args... args) { (std::cout << ... << args); }
+    print("Age: ", 24, ", GPA: ", 3.8);                  -> prints
+
+18 ~~~~~  Variadic Template Recursion Example (old):
+//Continue Learning: Fold expression, recursive template instantiation
+
+    void print() {
+    template <typename T, typename... Args>
+    void print(T first, Args... rest) {
+      std::cout << first << '\n';
+      print(rest...);
+    }
+    print(1, 2.5, "hello", 'A');
+    //caauses a recursive template instantiation
+
+19 ~~~~~  Fold Expressions Example:
+//Continue Learning: Fold expressions
+
+    template <typename... Args>
+    auto sum(Args... args){ return (args + ...); }
+    auto result = sum(1,2,3,4,5);                  -> 15
+    //"(args + ...)" is a fold expression 
+
+20 ~~~~~  Concepts Templates Example:
+    //Instead of
+    template <typename T>
+    void print(T value) { std::cout << value; }
+
+    //You can
+    template <typename T>
+    requires requires(T value) { std::cout << value; }
+    void print(T value) { std::cout << value; }
+
+    //or, to make reusable concept
+    template <tyoename T>
+    concept Printable = requires(T value) { std::cout << value; }
+
+    //then
+    template <Printable T>
+    void print(T value) { std::cout << value; }
+
+21 ~~~~~  Standard-Library Example:
+//c++20, safer than allowing every type and fixing the inevitable crash
+
+    #include <concepts>
+    template<std::integral T>
+    T square(T value) { return value * value; }
+
+22 ~~~~~  if contexpr Example:
+
+    template <typename T>
+    void process(T value) { if constexpr
+      (std::is_integral_v<T>) { std::cout << "Integer\n"; }
+      else { std::cout << "Non-integer\n"; }
+    }
+    process(42) -> Integer
+    process(3.14) -> Non-integer
+
+23 ~~~~~ Compile-Time Factorial Example:
+
+    template <int N>
+    struct Factorial { static constexpr int value = N * Factorial<N - 1>::value; };
+    template <>
+    struct Factorial<0> { static constexpr int value = 1; };
+    //then
+    static_assert(Factorial<5>::value == 120); 
+    //shows templates can preform computation during compilatation
+    //in modern c++...
+    constexpr int factorial(int n) { if (n == 0) return 1;
+      return n * factorial(n - 1);
+    }
+
+24 ~~~~~  CRTP (curiously recurring template pattern) Example:
+
+    template <typename Derived>
+    class Base { 
+    public: void interface() {
+    statc_cast<Derived*>(this)->implementation () { std::cout << "Derived implementation\n"; }
+    };
+    Derived d;
+    d.interface();
+    //static polymorphism without virtual functions
+
+25 ~~~~~  Template template parameters:
+
+    template <template <typename> typename Container, typename T>
+    class Wrapper { private: Container<T> data; };
+    Wrapper<std::vector, int> numbers;
+    //Container = vector, T = int
+
+
+
