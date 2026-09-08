@@ -187,4 +187,84 @@ Visibility: Whether a particular piece of code can access an entity.
     private, public, etc
 
 Memory
-Memory:
+Memory: Storage used by a computer to hold program data
+        RAM
+Address: Location of data in memory.
+
+Pointer: Object containing a memory address.
+
+Reference: An alias for another object.
+
+Dereference: Accessing the object pointed to by a pointer.
+
+Address-of operator: Obtains an object's address.
+
+Heap: Memory region generally used for dynamcally allocated objects. 
+
+Stack: Memory traditionally used for function calls and automatic objects.
+
+Dynamic allocation: Obtaining memory during program execution. 
+
+Deallocation: Releasing dynamically allocated memory. 
+
+Memory leak: Allocated memory that is no longer reachable/reclaimable. 
+        haning pointers
+Dangling pointer: Pointer referring to an object that no longer exists.
+
+RAII: c++ technique where resource lifetime is tied to object lifetime.
+        std::unique_ptr automatically releases memory.
+
+
+Data Structures
+Data Structures: Organization of data for efficient use. 
+
+Array: Contiguous sequence of elements, usually fixed-size. 
+
+Vector: Dynamically sized array.
+
+List: Collection whose elements are linked through nodes.
+
+Stack: Last in first out (LIFO) structure.
+
+Queue: FIFO Structure: First in, first out. 
+
+Deque: Double-ended queue. 
+
+Set: Collection of unique values. 
+
+Map: collection Associating keys with values. 
+
+Hash table: Structure providing fast average-case key lookup. 
+
+Tree: Hierarchical data structure.
+        file-system
+Graph: Collection of vertices connected by edges.
+
+Node: Individual element within many linked structures. 
+
+Object-Oriented Programming
+Object:  An instanace containing data and/or behavior
+
+Class: Type (blueprint) defining an object's structure and behavior. 
+
+Member: Element belonging to a class/object.
+
+Member variable: Data stored within an object.
+
+Member function: Function belonging to a class.
+
+Constructor: Special function used to initialize an object. 
+
+Destructor: Special function called when an object is destroyed.
+
+Encapsulation: Bundling data and behavior while controlling access. 
+
+Inheritance: Creating a type based on another type.
+
+Polymorphism: Allowing one interface to represent  different underlyng implementations.
+
+Abstraction: Hiding implementation details behind a simpler interface.
+
+Virtual function: C++ function supportng runtime polymorphism. 
+
+Compostion: Building an object from other objects. 
