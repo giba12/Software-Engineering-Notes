@@ -49,12 +49,12 @@ Generic programing-> Multi type, compiler generates a version when use. I.e. Ins
                                                             ("class" defines the container type "class" 
       
 
-Initialization Examples->
-
-template <parameters> declaration
+Initialization Examples->                                    Basic notation: template <parameters> declaration
 
   Simple template examples->
 1 ~~~~~  Basic Template Example: 
+//Continue learning: Template Parameters, Instantiation, Type Deduction
+
     template <typename T>
     T add(T a, T b){ return a + b; }
     int c = add(2, 3);
@@ -64,9 +64,9 @@ template <parameters> declaration
       //It's "type function (function-type value, function-type value) instead of (for example) int add( int a, int b).
       //That way you can pass and return what ever type (so long as its type-logic is compatible with this function). 
 
-//Continue learning: Template Parameters, Instantiation, Type Deduction
-
 2 ~~~~~~  Explicit and Deuction Template Argument Example:
+//Continue Learing: Explicit Instantiation Arguments v.s. Type Deduction
+
     template <typename T>
     T multiply(T a, T b){ return a * b; }
     auto x = multiply<int>(2,3);
@@ -80,11 +80,11 @@ template <parameters> declaration
         ( The "auto" keyword automatically deduces the type at compile time
         ( So... type "auto"(the compiler will deduce its type as type int/double) x = the result of template function "T" 
             with the arugments (int 2, int 3). 
-      // Note, we did not define the type of "x & y", the compiler 'deduced' the type of "x & y"-> redundant, but worth stating 'explicitly' ;)
-
-//Continue Learing: Explicit Instantiation Arguments v.s. Type Deduction
+// Note, we did not define the type of "x & y", the compiler 'deduced' the type of "x & y"-> redundant, but worth stating 'explicitly' ;)
 
 3 ~~~~~  Two *Type Parameter With Return-Type Deduction Example:
+//Continue Learing: Multiple Template Parameters and Return-Type Deduction
+
     template <typename T, typename U>
     auto add(T x, U y){ return x + y; }
       auto result = add(10, 2.5);                     result-> 12.5 (double) 
@@ -93,9 +93,9 @@ template <parameters> declaration
       //So -> "10" and "2.5" can retain their intitial types (int and double) until the compiler deduces their new type 
           after the function "add" returns "x + y."
 
-//Continue Learing: Multiple Template Parameters and Return-Type Deduction
-
 4 ~~~~~  Generic Comparison Example:
+//Continue Learing: Generic Programming
+
     template <typename T>
     bool greater(T a, T b){ return a > b; }
     greater(10, 5);
@@ -105,10 +105,10 @@ template <parameters> declaration
     //Note, function 'greater' is not of type 'T', it is type 'bool'
     //Note, templates do not *require inheritance or a common base class. Templates can be global variables... consider best-practices though. 
     //function 'greater' only requires that type 'T' must be compatible with the '>' operator. 
-
-//Continue Learing: Generic Programming
   
 5 ~~~~~  Class Constructors in Templates Example: 
+//Continue Learing: Class Templates and Template Instantiation
+
     template <typename T>
     class Box {
       private: T value; 
@@ -135,9 +135,9 @@ template <parameters> declaration
             (   initialized integer "value" as a parameter. 
             ( when the data type of class called "Box" gets called in another *function, it has to initialize a data container of type "T" called "value"-
 
-//Continue Learing: Class Templates and Template Instantiation
-
 6 ~~~~~  Generic Dynamic Array Templates Example:
+//Continue Learing: Template + Reasource Management + Operators
+
     template <typename T>
     class Array {
     private: 
@@ -163,9 +163,9 @@ template <parameters> declaration
     //data will point to the first element. 
 //Note, array iterators move through arrays by adding the byte-sze of "T" to its current position in the array 
 
-//Continue Learing: Template + Reasource Management + Operators
-
 7 ~~~~~  Multiple Templates Parameters in A Class-Hetergeneous Generic Data Structures Example:
+//Continue Learing: Heterogeneous Generic Data Structures
+
     template <typename Key, typename Value>
     class Pair {
     public: Key key;
@@ -174,9 +174,8 @@ template <parameters> declaration
     Pair<std::string, int> person;
     //instantiates class "Pair" with and object called "person" with Key as a string, and Value as an integer
 
-//Continue Learing: Heterogeneous Generic Data Structures
-
 8 ~~~~~  Non-type Template Parameters Example:
+
     template <typename T, std::size_t Size> //std::size_t is an unsigned-int of the sizeof() function
     class Array {
     private:
@@ -193,6 +192,7 @@ template <parameters> declaration
 Note, the "const" before the member function brackets denotes that the function can not change the value of its parameter(s)- it is called a "cv-qualiffier"
 
 9 ~~~~~  Compile-Time Array Size Template Example:
+
     template <typename T, std::size_t Size>
     class Array {
       T data[Size];
@@ -204,6 +204,7 @@ Note, the "const" before the member function brackets denotes that the function 
     //contextpr is a keyword that allows you to declare variaables/functions evaluated at comp-time. Performance and memory opt
 
 10 ~~~~~  Default Template Parameters Example:
+
     template <typename T = int>
     class Box {
     public:
@@ -213,7 +214,8 @@ Note, the "const" before the member function brackets denotes that the function 
     Box<> b; -> Box becomes an int due default notation. 
 
 11 ~~~~~  Template Specialization Example:
-    //similar to polymorphism in the sense that the type can impact the behavior. 
+//Continue Learing: Full Template Specialization  
+
     template <typename T>
     class Storage {
     public: 
@@ -229,9 +231,9 @@ Note, the "const" before the member function brackets denotes that the function 
     Storage<int> a;    a.print(); -> generic storage
     Storage<bool> b;   b.print(); -> bool storage
 
-//Continue Learing: Full Template Specialization 
+12 ~~~~~  Partial Specialization Example:
+//Continue Learing: Template Metaprogramming
 
-  12 ~~~~~  Partial Specialization Example:
     //Polymorphism kind of
     template <typename T>
     class TypeInfo { };
@@ -243,9 +245,9 @@ Note, the "const" before the member function brackets denotes that the function 
     TypeInfo<int*> -> matches
     TypeInfo<int> -> does not match. 
 
-//Continue Learing: Template Metaprogramming
+13 ~~~~~  Type Traits Example:  
+//Continue Learning: Compile-Time Type Inspection
 
-13 ~~~~~  Type Traits Example:
     template <typename T>
     struct IsPointer { static constexpr bool value = false; };
     template <typename T> struct IsPointer<T*> { static constexpr bool value = true; };
@@ -254,9 +256,8 @@ Note, the "const" before the member function brackets denotes that the function 
 
     //similar to stuff in " #include <type_traits>" like... "std::is_pointer_v<T>
 
-    //Continue Learning: Compile-Time Type Inspection
-
 14 ~~~~~  Dependent Types Example:
+
     template <typename Container>
     void process(const Container& container) { typename Container::value_type value; 
       //do something }
@@ -265,17 +266,22 @@ Note, the "const" before the member function brackets denotes that the function 
     //Container::value_type is a dependent name
 
 15 ~~~~~  "decltype" + templates Example:
+//Continue Learning: "decltype"
+
     template <typename T, typename U>
     auto multiply(T a, U b) ->
     decltype(a * b) { return a * b; }
     multiply(2, 3.5); -> the return becomes "double" 
+    //decltype allows us to return a varable of the same type as a+b, it does not infer the type of a+b based on the data contained at the address of a+b
                      or to simplify
     template<typename T, typename U>
     auto multiply (T a, U b) { return a * b; } 
-
-//Continue Learning: "decltype"
+    //auto simply infers the type of a+b and returns it based on the data contained at the address of a+b, it does not return the value based on an expression 
+    //While the difference between the two is not critical in this example, it can be in different contexts and implementations. 
 
 16 ~~~~~  Perfect Forwarding Example:
+//Continue Learning: Forwarding References, Value Categories, Move Semantics. 
+
     template <typename T>
     void process(T&& value){ //do something }
     std::forward<T<(value)
@@ -283,5 +289,5 @@ Note, the "const" before the member function brackets denotes that the function 
     template <typename T>
     void process(T&& value) { consume(std::forward<T>(value)); }
 
-//Continue Learning: Forwarding References, Value Categories, Move Semantics. 
+17 ~~~~~  Variadic Templates Example:
 
