@@ -1,5 +1,7 @@
-Type:
+Vocab: definition
+    example
 
+Miscellaneous
 Member:
 
 Dependant name:
@@ -18,3 +20,171 @@ Meta->
   data:
 
   binary: 
+
+Domain Language:
+
+Decltype:
+
+id_expression:
+
+Args:
+
+Requires:
+
+lvalue: 
+
+rvalue:
+
+xvalue:
+
+gvalue:
+
+prvalue:
+
+program: A set of instructions a computer excutes to a perform a task.
+
+Source Code: Human-readable code written by a programmer. 
+
+Syntax: The rules governing how code must be written.
+
+Semantics: The meaning/behavior of valid code.
+
+Statement: A complete instruction executed by a program. 
+    x = x + 1;
+Expression: Code that produces a value.
+    x + 5
+Literal: A value written directly into source code. 
+
+Identifier: A name used to identify a program entity.
+    myVar
+Keyword: A reserved word with a special meaning in a language.
+    class, if, return, template, int, etc
+Comment: Text ignored by the compiler, used to document code. 
+    //line in c++, /*multi-line in c++*/, #line in python, """ multi-line in python """
+Bug: An unknown defect in a program
+
+Debugging: Finding and fixing bugs.
+
+Runtime: The period during which a program is executing.
+
+Compile time: The period when source code is translated/checked before execution.
+
+
+Variables and data types
+Variable: A named object/storage location whose value can change. 
+    int age = 24;
+Constant: A value that cannot be modified after initialization. 
+    const int MAX = 100;
+Data: Information manipulated by a program. 
+    number, text, images, etc
+Data type: Defines what kind of data something represents and how it can be used. 
+    int, double, bool, char, unsigned_int, struct, class
+Primitive type: A fundamental built-in data type
+    int, char, bool
+Integer: A whole number
+
+Floating-point: A type representing numbers with fractional values.
+    double pi = 3.14159
+Boolean: A value representing true or false.
+
+Character: A single character.
+
+String: A sequence of characters.
+
+Null/nullptr: Represents the absence of an object/reference for a pointer-like value.
+    int* p = nullptr;
+
+Type Conversion: Changing a value from one type to another. 
+
+Type Inference: Allowing the compiler to determine a variable's type. 
+    auto in c++
+
+
+Operators
+Operator: A symbol or keyword that performs an operation.
+    !, +, =, ==, etc
+Arithmetic operator: preforms mathematical operations. 
+    a * b
+Assignment: Gives a variable a value.
+    x = 10;
+Comparison: Compares value.
+    x == 10;
+Logical Operator: Combines or modifies Boolean cconditions.
+    x > 0 && y > 0
+Unary operator: operates on one operand. 
+    !x, ++x, -x;
+Binary operator: Operates on two operands
+    x + y;
+Ternary operator: Conditional operator involving three operands. 
+    x > 0 ? 1 : -1
+
+Control Flow
+Control flow: The oder in which instructions execute.
+    if, else, loop, return
+Conditional: Code tht executes depending on a condition. 
+    if(x > 10)
+Condition: An expression evaluated as true or false. 
+    x == 5
+if statement: Executes code when a condition is true.
+    if (age >= 18) {...}
+else: provides an alternative branch
+
+else if: Tests another condition if the previous one was false.
+
+Switch: Selects among the multiple cases based on a value. 
+
+Loop: Repeatedly executes code.
+
+Iteration: One repettion of a loop:
+
+for loop: Loop commonly used when iteration structure is known, 
+
+While loop: Repeats while a condition is true.
+
+Break: Immediately exits a loop or switch.
+
+Continue: Skips to the next loop iteration. 
+
+Recursion: A function calls itself. 
+
+Functions
+Function: A function packages a resuable operation.
+
+Functon declaration: Tells the compiler a function exists.
+    int add( int s, int p) 
+Function definition: Provides the implementation of a function
+    int add(int a, int b){return a+b}
+Parameter: Variable specified in a function definition. 
+    int a
+Argument: Actual value passed to a function.
+    add(2,3)->2
+Return value: Value produced by a function.
+    return a + b;
+Return type: Type  of a value a function returns. 
+  return *int*;
+Void: Indicates that a function returns no value.
+
+Function call: Invoking a function.
+    add(2,3);
+Overloading: Multiple functions share a name but have a different parameters.
+
+Callback: A function supplied to another function to be invoked later.
+
+higher-order function: A function that accepts or return another functon.
+
+Scope and lifetime (c++)
+Scope: Region of code where a name can be accessed.
+    A local variable exists within its {} block.
+local variable: Variable declared inside a function/block
+
+Global Variable: variable declared outside functions/classes.
+
+Lifetime: how long an object exsts durng program execution.
+    pointers
+Namespace: A named scope used to organize and distinguish identifiers. 
+
+Visibility: Whether a particular piece of code can access an entity. 
+    private, public, etc
+
+Memory
+Memory:
