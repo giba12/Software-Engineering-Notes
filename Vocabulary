@@ -409,3 +409,25 @@ Code coverage: Measure of how much code is exercised by tests.
 
 Version Control and Development
 Version control: System for tracking changes to code. 
+
+Repository: Collection of project files and their version history. 
+
+Commit: Recorded set of changes.
+
+Branch: Independent line of development.
+
+Merge: Combines changes from different branches. 
+
+Pull requests: Proposed change for review and integration.
+
+Clone: Creates a local copy of a repository.
+
+CL: Continous Integration: Automatically builds/tests changes. 
+
+CD: Continous delivery/deployment automates software release/deployment. 
+
+Pipeline: Sequence of automated development steps. 
+
+
+Concurrency and Systems Programming:
+
