@@ -268,3 +268,15 @@ Abstraction: Hiding implementation details behind a simpler interface.
 Virtual function: C++ function supportng runtime polymorphism. 
 
 Compostion: Building an object from other objects. 
+
+
+C++ Specific Vocabulary
+Template: Code parameterized types or values.
+
+Type Parameter: A templatenparameter representing a type. 
+
+typename: Indicates that a dependent name represents a type; also introduces tyoe temokate parameters. 
+
+class: Can also introduce a type template parameter.
+
+Dependent type: A type whose meaning dependds on a template parameter. 
