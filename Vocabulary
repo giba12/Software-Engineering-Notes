@@ -371,3 +371,29 @@ Client: Software that requests a service, focused on the user interactive part.
 Server: Software that provides a service, focused on the server part. 
 
 Frontend: User-facing portion of an application. 
+
+Backend: Server-side/application logic.
+
+Database: System for storing and retrieving structured data. 
+
+Microservce: Independently deployable service performing a focused function.
+
+Monolith: Application whose major functionality s deployed  as one unit. 
+        Single backend application
+Middleware: Software layer connecting or processing communication between components. 
+
+
+Errors and Testing
+Error:  A problem detected by the language/tool/runtime. 
+
+Exception: Mechanism for reporting exceptional runtime conditions. 
+
+Exception handling: Code that responds to exceptions. 
+
+Assertion: Statement that checks an assumption. 
+
+Test: Code/process used to verify expected behavior. 
+
+Unit test: Tests multiple componebta working together.
+        API+database test
+Integration test: Tests muultiple components working together. 
