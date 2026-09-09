@@ -296,3 +296,15 @@ rvalue: Generally, a temorary/value expression that isn't a lvalue.
 Move Semantics: Allows resources to be transferred rather than copied. 
         std::move(obj)
 Smart Pointer: Pointer-like object managing ownership automatically.
+
+Header: File Containing declarations, definitions, or interfaces.
+        #include <vector>
+Translation Unit: A source file after preprocessing, treated as one compilation unit. 
+        main.cpp
+Linker: Combines compiled code and resolves references between translation units/libraries.
+
+ABI: Binary interface governing how complied componets interact. 
+
+
+Compilation
+Compilation: Converts source code into lower-level code.
