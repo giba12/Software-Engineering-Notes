@@ -332,3 +332,25 @@ Dependency: External code/software required by a program.
 
 Algorithms and Complexity
 Algorithm: A defined procedure for solving a problem. 
+
+Algorithmic complexity: How resource requirements grow with input size.
+
+Time complexity: How execution time scales with input size. 
+
+Space complexity: How memory requirements scale with input size. 
+
+Big O notation: Describes an upper-bound griwth rate. 
+
+Linear: Growth proportional to input size. 
+
+Logarithmic: Growth proportional to the logarithm of input size.
+
+Quadratic: Growth proportional to the square of input size.
+        O(n^2)
+Search Algorithm: Algorithm for finding data. 
+
+Sorting Algorithm: Algorithm for ordering data. 
+
+Recursion: Solving a problem through smaller instances of itself.
+
+Software Architecture
