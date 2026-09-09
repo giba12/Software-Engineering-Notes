@@ -354,3 +354,20 @@ Sorting Algorithm: Algorithm for ordering data.
 Recursion: Solving a problem through smaller instances of itself.
 
 Software Architecture
+Architecture: Overall structure of a software system.
+
+Component: Distinct part of a software system. 
+
+Module: Self-contained unit of functionality. 
+
+API: Defined interface through which software componets communicate. 
+
+Endpoint: Specific address/operation exposed by an API
+
+Protocol: Rules governing communication between systems. 
+
+Client: Software that requests a service, focused on the user interactive part.
+
+Server: Software that provides a service, focused on the server part. 
+
+Frontend: User-facing portion of an application. 
