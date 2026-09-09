@@ -397,3 +397,12 @@ Test: Code/process used to verify expected behavior.
 Unit test: Tests multiple componebta working together.
         API+database test
 Integration test: Tests muultiple components working together. 
+
+Regression test: Ensures previously working functionality remains working. 
+        Re-running tests after a big fix
+Test case: Specific input/conditions and expected results.
+
+Mock: Simulated dependency used during testing.
+
+Code coverage: Measure of how much code is exercised by tests. 
+
