@@ -308,3 +308,27 @@ ABI: Binary interface governing how complied componets interact.
 
 Compilation
 Compilation: Converts source code into lower-level code.
+
+Preprocessor: Preforms preprocessing directives before compilation.
+        #include
+Object file: Compiled machine code that hasn't necessarily been linked.
+        main.o
+Linker: Combines object files and libraries into an executable/library
+
+Executable: A file containing code that can be run.
+
+Library: Reusable compiled/ cource code. 
+
+Static library: Library code ncorporated into the executable during linking. 
+
+Dynamic/Shared library: Library loaded separately from the executable. 
+        .so, .dll, .dylib
+Build: Process of producing software artifacts from source code. 
+
+Build System: Tool that automates compilation and related tasks. 
+        CMake, Ninja
+Dependency: External code/software required by a program. 
+
+
+Algorithms and Complexity
+Algorithm: A defined procedure for solving a problem. 
