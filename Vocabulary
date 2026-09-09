@@ -280,3 +280,19 @@ typename: Indicates that a dependent name represents a type; also introduces tyo
 class: Can also introduce a type template parameter.
 
 Dependent type: A type whose meaning dependds on a template parameter. 
+
+insantiation: Creating a concrete verssion of a template. 
+
+Generic Programming: Writing algorithms/data structures that work with many types.
+
+STL: Common C++ library componets for containers, algorithms, iterators, ...
+
+Iterator: Object used to traverse elements in a range/container. 
+
+lvalue: An expression referring to an identifiable object/location.
+        int x
+rvalue: Generally, a temorary/value expression that isn't a lvalue.
+        x + 1
+Move Semantics: Allows resources to be transferred rather than copied. 
+        std::move(obj)
+Smart Pointer: Pointer-like object managing ownership automatically.
