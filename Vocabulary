@@ -436,4 +436,7 @@ Thread: Execution path within a process.
         Worker thread.
 Concurrency: Multiple tasks making progress during overlapping periods.
         Two threads processing jobs. 
-
+Parallelism: Multiple operations actually executing simultaneously.
+        Two CPU cores processing two tasks.
+Synchronization: Coordinating concurrent operations.
+        Mutex
