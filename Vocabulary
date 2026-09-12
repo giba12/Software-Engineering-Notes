@@ -31,10 +31,10 @@ Args:
 
 Requires:
 
-lvalue: 
-
-rvalue:
-
+lvalue: An expression referring to an identifiable object/location.
+        int x
+rvalue: Generally, a temorary/value expression that isn't a lvalue.
+        x + 1
 xvalue:
 
 gvalue:
@@ -289,10 +289,6 @@ STL: Common C++ library componets for containers, algorithms, iterators, ...
 
 Iterator: Object used to traverse elements in a range/container. 
 
-lvalue: An expression referring to an identifiable object/location.
-        int x
-rvalue: Generally, a temorary/value expression that isn't a lvalue.
-        x + 1
 Move Semantics: Allows resources to be transferred rather than copied. 
         std::move(obj)
 Smart Pointer: Pointer-like object managing ownership automatically.
@@ -447,3 +443,10 @@ Race condition: Result depends on unpredictable timing between concurrent operat
 Deadlock: Threads become permanetly blocked waiting for one another.
 
 Atomic operation: operation that occurs indivisibly with respect to other threads.
+
+Asynchronous: Work can proceed independently of the callers immediate execution. 
+        Async network request. 
+Multithreading: Using multiple threads within a program. 
+
+IPC: Inter-process communication.
+        Pipe, shared memory, sockets
