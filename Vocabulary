@@ -440,3 +440,10 @@ Parallelism: Multiple operations actually executing simultaneously.
         Two CPU cores processing two tasks.
 Synchronization: Coordinating concurrent operations.
         Mutex
+Mutex: Lock used to protect shared resources.
+
+Race condition: Result depends on unpredictable timing between concurrent operations.
+
+Deadlock: Threads become permanetly blocked waiting for one another.
+
+Atomic operation: operation that occurs indivisibly with respect to other threads.
