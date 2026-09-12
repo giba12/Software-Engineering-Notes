@@ -430,4 +430,10 @@ Pipeline: Sequence of automated development steps.
 
 
 Concurrency and Systems Programming:
+Process: Independent running instance of a proggram.
+        A running browser.
+Thread: Execution path within a process.
+        Worker thread.
+Concurrency: Multiple tasks making progress during overlapping periods.
+        Two threads processing jobs. 
 
