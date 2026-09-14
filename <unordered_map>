@@ -1,4 +1,5 @@
 Quick Information: 
+#include <unordered_map>
 'std::unordered_map' is a container in C++ that stores ley-value pairs. It is optimized for fast lookup by key. 
     -> std::unordered_map is a hash table that lets you associate a key with a value.
        std::unordered_map<std::string, int> ages;
@@ -20,9 +21,49 @@ Basic Syntax
   Value-> Int
   VariableName-> ages
 
-Implementation and Use-Cases
-  Sequence containers likely need to be iterated,* but the compiler already knows where the element should be located from the key.
-    (i.e.,In an unordered_map, you have a 'map' to the key. You don't have to find the key from a sequence of keys.)
-  
+Complexity
+Operation        Average        Worst Case-> (Hashing Collisions)
+Intert           0(1)           0(n)
+Find             0(1)           0(n)
+Erase by Key     0(1)           0(n)
+Access[]         0(1)           0(n)
 
+Implementation and Use-Cases
+    Unordered maps tend to use hashing systems. 
+    Sequence containers need to be iterated,* but the compiler already knows where the element should be in memory from the key-class in an unordered_map.
+        (i.e.,In an unordered_map, you have a 'map' to the key. You don't have to find the key from a sequence of keys).
+    Each element is essentially a std::pair<const Key, Value>
+        Which has .first (key), .second (value)
   
+<unordered_map> Functions
+mapName.empty() -> 0(1)
+    Returns a 'bool' type
+    returns true if there are no elements
+
+mapName.size() -> 0(1)
+    returns a "integer" type
+    returns the number of the elements present
+
+mapName[key] = value -> 0(1)
+    Looks up the key.
+    If the key does not exist, the operator[] creates the key and sets its value to zero at first. 
+    The operator[] could accientally create a key. 
+
+mapName.find(key) -> 0(1)
+    .find(key) does not insert anything. 
+    Returns an iterator to that pair, or the end iterator
+
+Examples
+1. Creating an Empty Unordered Maps
+std::unordered_map<std::string, int> ages;
+
+2. Inerting Elements With operator[]
+ages["key"] = value; 
+
+3. Using an Iterator
+auto it = ages.find(key);
+    it->first outputs the key
+    it->second outputs the value
+
+
+
