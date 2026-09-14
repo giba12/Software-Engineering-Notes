@@ -1,1 +1,28 @@
+Quick Information: 
+'std::unordered_map' is a container in C++ that stores ley-value pairs. It is optimized for fast lookup by key. 
+    -> std::unordered_map is a hash table that lets you associate a key with a value.
+       std::unordered_map<std::string, int> ages;
+        ages["Alice"] = 24;
+        ages["Bob"] = 31;
+        std::cout << ages["Alice"];    output-> "24" 
+  
+      In the above example, the unordered_map uses a type of "string" as the key and a type "int" as a value. 
 
+C++ Container Ecosystem
+  std::unordered_map is an associative container. 
+    -> Keys are unsorted
+    -> Accessed by index
+    -> Usually implemented using a hash table. 
+
+Basic Syntax
+  std::unordered_map<keyTpe, ValueType> VariableName; -> std::unordered_map<std::string, int> ages;
+  Key-> string
+  Value-> Int
+  VariableName-> ages
+
+Implementation and Use-Cases
+  Sequence containers likely need to be iterated,* but the compiler already knows where the element should be located from the key.
+    (i.e.,In an unordered_map, you have a 'map' to the key. You don't have to find the key from a sequence of keys.)
+  
+
+  
