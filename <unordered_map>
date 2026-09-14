@@ -35,7 +35,7 @@ Implementation and Use-Cases
     Each element is essentially a std::pair<const Key, Value>
         Which has .first (key), .second (value)
   
-<unordered_map> Functions
+Functions
 mapName.empty() -> O(1)
     Returns a 'bool' type
     returns true if there are no elements
@@ -66,13 +66,19 @@ mapName.contains(key) -> O(1)
 mapName.insert(key, value) or mapName.insert(std::make_pair(key, value)); -> O(1)
     Can insert multiples ({ {k1,v1}, {k2, v2}, ...});
 
-mapName.emplace() -> 
+mapName.emplace(key, element) -> Amortized Constant
+    Returns a pair of an iterator and a bool
+    If the element already exists, it returns and terator point to the inserted element. 
+    If the element does not exist, it reutns an iterator to the newly added container. 
     Can optimize performance
     emplace() can avoid unnecessary temporary objects.
+    Inserts an element. 
 
 C++ 17
-mapName.try_emplace("Key", constructor_argument);
+mapName.try_emplace("Key", constructor_argument); -> O(1)
     The mapped object is only constructed if the key doesn't already exist. 
+    Avoids unnecessary object construction. 
+    Returns whether the insertion was successful. 
 
 Examples
 1. Creating an Empty Unordered Maps
@@ -105,3 +111,5 @@ data.emplace( "score", std::vector<int>{10, 20, 30} );
 7. Using .try_emplace
 std::unordered_map<std::string, MyObject> objects;
 objects.try_emplace("Alice", constructor_argument1);
+Or
+map.try_emplace("a", 123); 
