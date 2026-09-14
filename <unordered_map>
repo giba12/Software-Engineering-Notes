@@ -36,22 +36,43 @@ Implementation and Use-Cases
         Which has .first (key), .second (value)
   
 <unordered_map> Functions
-mapName.empty() -> 0(1)
+mapName.empty() -> O(1)
     Returns a 'bool' type
     returns true if there are no elements
 
-mapName.size() -> 0(1)
+mapName.size() -> O(1)
     returns a "integer" type
     returns the number of the elements present
 
-mapName[key] = value -> 0(1)
+mapName[key] = value -> O(1)
     Looks up the key.
     If the key does not exist, the operator[] creates the key and sets its value to zero at first. 
     The operator[] could accientally create a key. 
 
-mapName.find(key) -> 0(1)
+mapName.find(key) -> O(1)
     .find(key) does not insert anything. 
     Returns an iterator to that pair, or the end iterator
+
+mapName.at() -> O(1)
+    Does not insert a missing key
+    If the key does not exist, it throws std::out_of_range
+
+C++ 20+ 
+mapName.contains(key) -> O(1)
+    returns bool
+    returns true if the key is found
+    Does not insert
+
+mapName.insert(key, value) or mapName.insert(std::make_pair(key, value)); -> O(1)
+    Can insert multiples ({ {k1,v1}, {k2, v2}, ...});
+
+mapName.emplace() -> 
+    Can optimize performance
+    emplace() can avoid unnecessary temporary objects.
+
+C++ 17
+mapName.try_emplace("Key", constructor_argument);
+    The mapped object is only constructed if the key doesn't already exist. 
 
 Examples
 1. Creating an Empty Unordered Maps
@@ -65,5 +86,22 @@ auto it = ages.find(key);
     it->first outputs the key
     it->second outputs the value
 
+4. Range-Based Loops
+For (const auto& pair : ages) {
+    pair.first;
+    pair.second; }
+Or
+for(const auto& [key, value] : ages){
+std::cout << key ":" << value; }
+//for every key/value pair... keyName = key; valueName = value; 
 
+5. Using .at()
+try{ std::count << ages.at("Nobody); }
+catch(const std::out_of_range& e){ std::cout << "Key not found"; } 
 
+6. Emplacing Complicated Types
+data.emplace( "score", std::vector<int>{10, 20, 30} );
+
+7. Using .try_emplace
+std::unordered_map<std::string, MyObject> objects;
+objects.try_emplace("Alice", constructor_argument1);
