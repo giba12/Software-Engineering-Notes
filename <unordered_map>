@@ -30,6 +30,16 @@ Access[]         0(1)           0(n)
 
 Implementation and Use-Cases
     Unordered maps tend to use hashing systems. 
+    An unordered map can only have one value per key, unless you use something like a vector for a value. You could also use a std::unordered_multimap. 
+    For example:
+        std::unordered_map<std::string, int> example; 
+        example[sample1] = 1;
+        example[sample1] = 7;            
+    sample1 will only equal 7.
+        std::unordered_map<std::string, std::vector<int>> example; 
+        example[sample1].push_back(1);
+        example[sample1].push_back(8);       
+    sample1 will equal (1, 8)
     Sequence containers need to be iterated,* but the compiler already knows where the element should be in memory from the key-class in an unordered_map.
         (i.e.,In an unordered_map, you have a 'map' to the key. You don't have to find the key from a sequence of keys).
     Each element is essentially a std::pair<const Key, Value>
@@ -80,6 +90,14 @@ mapName.try_emplace("Key", constructor_argument); -> O(1)
     Avoids unnecessary object construction. 
     Returns whether the insertion was successful. 
 
+mapName.insert_or_assign() -> O(n)
+    Returns std::pair<iterator, bool>
+    The iterator points to the element that was inserted/assigned
+    Bool returns true if the insertion took place
+    Bool returns false if an assignment took place
+    Best for expenseive-to-construct types (vector, objects, etcs)
+    Inserts stuff (duh :P)
+
 Examples
 1. Creating an Empty Unordered Maps
 std::unordered_map<std::string, int> ages;
@@ -113,3 +131,14 @@ std::unordered_map<std::string, MyObject> objects;
 objects.try_emplace("Alice", constructor_argument1);
 Or
 map.try_emplace("a", 123); 
+
+8. Using .insert_or_assign()
+map.insert_or_assign(Key, Value);
+//If Alice does not exist, insert Alice -> 25
+//If Alice exists, replace it's value with 25. 
+
+9. Erasing Elements
+    ages.erase(Key);
+By iterator:
+    auto it = ages.find(key);
+    if (it != ages.end()) { ages.erase(it); }
