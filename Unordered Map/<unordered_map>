@@ -1,0 +1,161 @@
+Quick Information: 
+#include <unordered_map>
+'std::unordered_map' is a container in C++ that stores ley-value pairs. It is optimized for fast lookup by key. 
+    -> std::unordered_map is a hash table that lets you associate a key with a value.
+       std::unordered_map<std::string, int> ages;
+        ages["Alice"] = 24;
+        ages["Bob"] = 31;
+        std::cout << ages["Alice"];    output-> "24" 
+  
+      In the above example, the unordered_map uses a type of "string" as the key and a type "int" as a value. 
+
+C++ Container Ecosystem
+  std::unordered_map is an associative container. 
+    -> Keys are unsorted
+    -> Accessed by index
+    -> Usually implemented using a hash table. 
+
+Basic Syntax
+  std::unordered_map<keyTpe, ValueType> VariableName; -> std::unordered_map<std::string, int> ages;
+  Key-> string
+  Value-> Int
+  VariableName-> ages
+
+Complexity
+Operation        Average        Worst Case-> (Hashing Collisions)
+Intert           0(1)           0(n)
+Find             0(1)           0(n)
+Erase by Key     0(1)           0(n)
+Access[]         0(1)           0(n)
+
+Implementation and Use-Cases
+    Unordered maps tend to use hashing systems. 
+    An unordered map can only have one value per key, unless you use something like a vector for a value. You could also use a std::unordered_multimap. 
+    For example:
+        std::unordered_map<std::string, int> example; 
+        example[sample1] = 1;
+        example[sample1] = 7;            
+    sample1 will only equal 7.
+        std::unordered_map<std::string, std::vector<int>> example; 
+        example[sample1].push_back(1);
+        example[sample1].push_back(8);       
+    sample1 will equal (1, 8)
+    Sequence containers need to be iterated,* but the compiler already knows where the element should be in memory from the key-class in an unordered_map.
+        (i.e.,In an unordered_map, you have a 'map' to the key. You don't have to find the key from a sequence of keys).
+    Each element is essentially a std::pair<const Key, Value>
+        Which has .first (key), .second (value)
+  
+Functions
+mapName.empty() -> O(1)
+    Returns a 'bool' type
+    returns true if there are no elements
+
+mapName.size() -> O(1)
+    returns a "integer" type
+    returns the number of the elements present
+
+mapName[key] = value -> O(1)
+    Looks up the key.
+    If the key does not exist, the operator[] creates the key and sets its value to zero at first. 
+    The operator[] could accientally create a key. 
+
+mapName.find(key) -> O(1)
+    .find(key) does not insert anything. 
+    Returns an iterator to that pair, or the end iterator
+
+mapName.at() -> O(1)
+    Does not insert a missing key
+    If the key does not exist, it throws std::out_of_range
+
+C++ 20+ 
+mapName.contains(key) -> O(1)
+    returns bool
+    returns true if the key is found
+    Does not insert
+
+mapName.insert(key, value) or mapName.insert(std::make_pair(key, value)); -> O(1)
+    Can insert multiples ({ {k1,v1}, {k2, v2}, ...});
+
+mapName.emplace(key, element) -> Amortized Constant
+    Returns a pair of an iterator and a bool
+    If the element already exists, it returns and terator point to the inserted element. 
+    If the element does not exist, it reutns an iterator to the newly added container. 
+    Can optimize performance
+    emplace() can avoid unnecessary temporary objects.
+    Inserts an element. 
+
+C++ 17
+mapName.try_emplace("Key", constructor_argument); -> O(1)
+    The mapped object is only constructed if the key doesn't already exist. 
+    Avoids unnecessary object construction. 
+    Returns whether the insertion was successful. 
+
+mapName.insert_or_assign() -> O(n)
+    Returns std::pair<iterator, bool>
+    The iterator points to the element that was inserted/assigned
+    Bool returns true if the insertion took place
+    Bool returns false if an assignment took place
+    Best for expenseive-to-construct types (vector, objects, etcs)
+    Inserts stuff (duh :P)
+
+mapName.clear() -> Linear time
+    Clears the entire map.
+    Returns the empty map.
+    Cheaper than creating a new map/object. 
+
+mapName.erase(key) -> O(1)
+    Returns the number of elements removed from the container (0 or 1)
+By iterator -> mapName.erase(next(mapName.begin(), 1))        
+    Returns an iterator point to the element that is just after the removed element or to unordered_map::end()
+By Range -> mapName.erase(first, last) ... m.erase(next(m.begin(), 1), next(m.begin(), 5)); O(x) where x is the number of elements between first and last. 
+    Returns an iterator point to the element that is just after the removed range.
+    If there is no such element, return iterator to unordered_map::end()
+
+Examples
+1. Creating an Empty Unordered Maps
+std::unordered_map<std::string, int> ages;
+
+2. Inerting Elements With operator[]
+ages["key"] = value; 
+
+3. Using an Iterator
+auto it = ages.find(key);
+    it->first outputs the key
+    it->second outputs the value
+
+4. Range-Based Loops
+For (const auto& pair : ages) {
+    pair.first;
+    pair.second; }
+Or
+for(const auto& [key, value] : ages){
+std::cout << key ":" << value; }
+//for every key/value pair... keyName = key; valueName = value; 
+
+5. Using .at()
+try{ std::count << ages.at("Nobody); }
+catch(const std::out_of_range& e){ std::cout << "Key not found"; } 
+
+6. Emplacing Complicated Types
+data.emplace( "score", std::vector<int>{10, 20, 30} );
+
+7. Using .try_emplace
+std::unordered_map<std::string, MyObject> objects;
+objects.try_emplace("Alice", constructor_argument1);
+Or
+map.try_emplace("a", 123); 
+
+8. Using .insert_or_assign()
+map.insert_or_assign(Key, Value);
+//If Alice does not exist, insert Alice -> 25
+//If Alice exists, replace it's value with 25. 
+
+9. Erasing Elements
+    ages.erase(Key);
+By iterator:
+    auto it = ages.find(key);
+    if (it != ages.end()) { ages.erase(it); }
+To clear everything:
+    ages.clear(); 
+
+10. Checking Size
