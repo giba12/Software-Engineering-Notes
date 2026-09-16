@@ -63,7 +63,7 @@ mapName.find(key) -> O(1)
     .find(key) does not insert anything. 
     Returns an iterator to that pair, or the end iterator
 
-mapName.at() -> O(1)
+mapName.at(key) -> O(1)
     Does not insert a missing key
     If the key does not exist, it throws std::out_of_range
 
